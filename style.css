@@ -1,0 +1,11 @@
+h1,
+h2 {
+  font-family: Lato;
+}
+
+#circle {
+  width: 5px;
+  height: 5px;
+  background-color: rgb(255, 153, 127);
+  border-radius: 2px;
+}
