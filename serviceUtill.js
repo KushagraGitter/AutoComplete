@@ -22,7 +22,7 @@ export function debounce(fn, wait) {
     const context = this;
     clearTimeout(timer);
     timer = setTimeout(() => {
-      fn.apply(this, arg);
+      fn.apply(context, arg);
     }, wait);
   };
 }

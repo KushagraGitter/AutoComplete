@@ -15,7 +15,7 @@ autoCompleteTextbox.prototype.bindEventListners = function bindEventListners() {
 
   this.inputBox.addEventListener(
     'input',
-    throttle(handleChangeEvent.bind(this), 1000)
+    debounce(handleChangeEvent.bind(this), 500)
   );
 };
 
