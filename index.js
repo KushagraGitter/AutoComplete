@@ -1,6 +1,6 @@
 // Import stylesheets
 import './style.css';
-import { fetchSuggestions, debounce } from './serviceUtill.js';
+import { fetchSuggestions, debounce, throttle } from './serviceUtill.js';
 // Write Javascript code!
 function autoCompleteTextbox(formID) {
   this.form = document.querySelector(formID);
@@ -15,7 +15,7 @@ autoCompleteTextbox.prototype.bindEventListners = function bindEventListners() {
 
   this.inputBox.addEventListener(
     'input',
-    debounce(handleChangeEvent.bind(this), 300)
+    throttle(handleChangeEvent.bind(this), 1000)
   );
 };
 
@@ -38,6 +38,6 @@ const autoComplteObj = new autoCompleteTextbox('#searchForm');
 autoComplteObj.bindEventListners();
 
 function handleChangeEvent(value) {
-  console.log(value.target.value);
+  console.log(value.target.value, new Date());
   this.getSuggestions(value.target.value);
 }
