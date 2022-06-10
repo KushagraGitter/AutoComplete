@@ -40,3 +40,19 @@ export function throttle(fn, wait) {
     }
   };
 }
+
+export function promiseAll(promises) {
+  let output = [];
+  return new Promise((resolve, reject) => {
+    promises.forEach((promise, idx) => {
+      promise
+        .then((value) => {
+          output[idx] = value;
+          if (output.length === promises.length) {
+            resolve(output);
+          }
+        })
+        .catch(reject);
+    });
+  });
+}
